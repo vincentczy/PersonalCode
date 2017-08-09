@@ -1,0 +1,16 @@
+slice 3
+our goal is to bind some ticket related data together, which are LegPV, Market Exposure, Scenario Impact, Shock and Position Summary. For now, we've binded first three of them together, so two to go in the rest few weeks.
+
+slice 4
+Next I will elabrate on how we get our jobs done. But first, I think we should spend a little time understanding the meanings of the five items, what lies behind these business concepts. First LegPV, pv is short for ...
+
+
+slice 5
+After understanding these items, let's switch to technical side. I encountered my biggest challenge when I used RunCalc to calculate scenario impact data. An error named 'Position not supported' was thrown out, when I tried restoring result data in Grain. However, the programme worked fine dumping 
+result data into local file system. So I digged deeper to Grain system, wanted to find out how does it restore data.
+
+slice 6
+After a series of struggling searching, I figured out that Grain restores not only value data, but also position data. Fortunately, LegPV and Market Exposure have the same position data, Priceable, so they fit Grain system well and are easy to binded in one line. But scenario impact is a Measurable data, not Priceable, it doesn't have the concept of Book or Ticket and Grain doesn't support measurable data right now. So we have to do some work to make Grain support Measurable and to bind Scenario Impact with the other two.
+
+slice 7
+To achieve our goal, 
